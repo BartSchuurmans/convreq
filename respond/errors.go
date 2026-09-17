@@ -74,6 +74,11 @@ func BadRequest(msg string) internal.HttpResponse {
 	return httpError{400, msg}
 }
 
+// Unauthorized creates a HTTP 401 Unauthorized response.
+func Unauthorized(msg string) internal.HttpResponse {
+	return httpError{401, msg}
+}
+
 // Forbidden creates a HTTP 403 Forbidden response.
 func Forbidden(msg string) internal.HttpResponse {
 	return httpError{403, msg}
