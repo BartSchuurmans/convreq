@@ -13,3 +13,10 @@ type Func func(w http.ResponseWriter, r *http.Request) error
 func (fn Func) Respond(w http.ResponseWriter, r *http.Request) error {
 	return fn(w, r)
 }
+
+// Skip does nothing. Useful for when you have already responded yourself but still have to return a convreq.HttpResponse.
+func Skip() internal.HttpResponse {
+	return Func(func(w http.ResponseWriter, r *http.Request) error {
+		return nil
+	})
+}
